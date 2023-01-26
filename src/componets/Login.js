@@ -36,7 +36,7 @@ function Login() {
     }
 
     return (
-        <div className='bg-gradient-primary'>
+        // <div className='bg-gradient-primary'>
             <div className="container">
 
 
@@ -100,7 +100,7 @@ function Login() {
                 </div>
 
             </div>
-        </div>
+        // {/* </div> */}
     )
 }
 
