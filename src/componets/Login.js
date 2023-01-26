@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
     // const [token,setToken] = (false)
@@ -87,7 +87,7 @@ function Login() {
                                                 <a className="small" href="forgot-password.html">Forgot Password?</a>
                                             </div>
                                             <div className="text-center">
-                                                <a className="small" href="register.html">Create an Account!</a>
+                                                <Link to='/SignUp' className="small" href="register.html">Create an Account!</Link>
                                             </div>
                                         </div>
                                     </div>
