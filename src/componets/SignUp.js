@@ -6,6 +6,7 @@ function SignUp() {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
+    const [alert, setAlert] = useState({ status: "", message: "" });
     const navigate = useNavigate();
 
     const handleSign = (e) => {
@@ -21,9 +22,14 @@ function SignUp() {
             .then((resp) => {
                 console.log(resp);
                 navigate('/dashboard');
-            }).catch((error)=>{
-                console.log(error);
-            })
+            }).catch(res => {
+                setAlert(alert.msg);
+                console.log(res.response.data)
+                setAlert({ status: 'error', message: res.response.data.msg[0] + res.response.data.msg[1] + res.response.data.msg[2] });
+                setTimeout(() => {
+                    document.querySelector('#alert-message').style.display = 'none';
+                }, 3000);
+            });
     }
     return (
         <>
@@ -39,6 +45,13 @@ function SignUp() {
                                     <div className="text-center">
                                         <h1 className="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
+                                    <p>
+                                            <div style={{ width: "100%", marginTop: "-12px" }} id='alert-message' className={` 
+                                                ${alert.status == "success" ? "alert alert-success show" : ""} 
+                                                ${alert.status == "error" ? "alert alert-danger show" : ""}`}>
+                                                <span>{alert.message}</span>
+                                            </div>
+                                        </p>
                                     <form className="user">
                                         <div className="form-group row">
                                             <div className="col-sm-6 mb-3 mb-sm-0">
